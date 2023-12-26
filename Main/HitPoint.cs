@@ -10,10 +10,14 @@ public class HitPoint : MonoBehaviour
         // towerとmobでHpの取得方法が違うので、それぞれのクラスで実装する
     }
 
-    public void Damage(int damage)
+    public virtual void Damage(int damage)
     {
         Hp -= damage;
-        if (Hp <= 0) OnDie();
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            OnDie();
+        }
     }
 
     protected virtual void OnDie()
