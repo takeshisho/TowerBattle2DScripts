@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HitPoint))]
 public class MobAttack : MonoBehaviour
 {
     // ひとまずはここで実行させるが、のちはMobStatusから実行できるように変更する。
@@ -31,14 +32,14 @@ public class MobAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(cooltime);
 
-            // 複数いる場合にwaitしている場合に敵が死ぬとエラーになるため。
-            // これをしてもEnter時のみしか攻撃処理が始まらないので、上手くはいかない。
-            // TODO: 複数体いる場合の攻撃処理を考える。
+            /* 複数いる場合にwaitしている場合に敵が死ぬとエラーになるため。
+               これをしてもEnter時のみしか攻撃処理が始まらないので、上手くはいかない。
+               TODO: 複数体いる場合の攻撃処理を考える。*/
             try {
                 targetHitPoint.Damage(damage);
             } 
             catch (Exception) {
-                Debug.Log("攻撃対象がいなくなりました。");
+                Debug.Log("<color=red>エラー: 攻撃対象がいなくなりました</color>");
                 break;
             }
         }
