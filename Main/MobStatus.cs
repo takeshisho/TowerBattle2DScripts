@@ -36,7 +36,7 @@ public class MobStatus : MobManager
             || other.gameObject.tag == "Player" && this.gameObject.tag == "Enemy") 
         {
             isMoveable = false;
-            mobAttack.AttackStart(Damage, Cooltime, other.gameObject.GetComponent<HitPoint>());
+            mobAttack.AttackStart(Damage, AttackCooltime, other.gameObject.GetComponent<HitPoint>());
         }
     }
 

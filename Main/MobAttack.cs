@@ -14,11 +14,11 @@ public class MobAttack : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void AttackStart(int damage, float cooltime, HitPoint hitpoint) 
+    public void AttackStart(int damage, float attackCooltime, HitPoint hitpoint) 
     {
         targetHitPoint = hitpoint;
         animator.SetBool("isAttack", true);
-        StartCoroutine(AttackAction(damage, cooltime));
+        StartCoroutine(AttackAction(damage, attackCooltime));
     }
 
     public void AttackExit() 
@@ -26,12 +26,10 @@ public class MobAttack : MonoBehaviour
         animator.SetBool("isAttack", false);
     }
 
-    IEnumerator AttackAction(int damage, float cooltime) {
+    IEnumerator AttackAction(int damage, float attackCooltime) {
 
         while(targetHitPoint.Hp > 0) 
         {
-            yield return new WaitForSeconds(cooltime);
-
             /* 複数いる場合にwaitしている場合に敵が死ぬとエラーになるため。
                これをしてもEnter時のみしか攻撃処理が始まらないので、上手くはいかない。
                TODO: 複数体いる場合の攻撃処理を考える。*/
@@ -42,6 +40,8 @@ public class MobAttack : MonoBehaviour
                 Debug.Log("<color=red>エラー: 攻撃対象がいなくなりました</color>");
                 break;
             }
+
+            yield return new WaitForSeconds(attackCooltime);
         }
     }
 }
