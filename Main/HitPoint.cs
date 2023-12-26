@@ -6,8 +6,8 @@ public class HitPoint : MonoBehaviour
 {
     public int Hp;
 
-    private void Start() {
-        Hp = GetComponent<MobManager>().MaxHp;
+    protected virtual void Start() {
+        // towerとmobでHpの取得方法が違うので、それぞれのクラスで実装する
     }
 
     public void Damage(int damage)
@@ -16,7 +16,7 @@ public class HitPoint : MonoBehaviour
         if (Hp <= 0) OnDie();
     }
 
-    private void OnDie()
+    protected virtual void OnDie()
     {
         Destroy(gameObject);
     }
