@@ -11,7 +11,7 @@ public class CustomButton : MonoBehaviour,
 
     [SerializeField] private CanvasGroup _canvasGroup;  
 
-    public void OnPointerClick(PointerEventData eventData)  
+    public virtual void OnPointerClick(PointerEventData eventData)  
     {
         onClickCallback?.Invoke();  
     }
