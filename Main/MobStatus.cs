@@ -30,8 +30,13 @@ public class MobStatus : MobManager
     /* TODO: 動画と違い、stayをつけることで複数敵がいた場合1体倒したら前に進むということが
        ないようにしたつもり。攻撃判定、死亡判定作成後に確認する。
        また他にいい方法がないかも考える。stayは毎フレーム呼び出してしまうから。 */
+    
+    /* TODO: 例えば城に攻撃していて、スライムが出てきたとする。スライムに攻撃が当たり倒れる。
+    　　その後、城に関してはすでにEnterが終了しているため、攻撃をしなくなる。
+     　 などなど複数体混ざるとバグまみれになってしまう。*/
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
         if (other.gameObject.tag == "Enemy" && this.gameObject.tag == "Player"
             || other.gameObject.tag == "Player" && this.gameObject.tag == "Enemy") 
         {
@@ -40,7 +45,8 @@ public class MobStatus : MobManager
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) 
+    {
         if (other.gameObject.tag == "Enemy" && this.gameObject.tag == "Player"
             || other.gameObject.tag == "Player" && this.gameObject.tag == "Enemy") 
         {
@@ -48,7 +54,8 @@ public class MobStatus : MobManager
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other) 
+    {
         if (other.gameObject.tag == "Enemy" && this.gameObject.tag == "Player"
             || other.gameObject.tag == "Player" && this.gameObject.tag == "Enemy") 
         {
