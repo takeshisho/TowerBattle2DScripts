@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     [SerializeField] CustomButton pauseButton;
     [SerializeField] CustomButton resumeButton;
 
-    void Start()
+    private void Start()
     {
         pausePanel.SetActive(false);
         pauseButton.onClickCallback = Pause;
