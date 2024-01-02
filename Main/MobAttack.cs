@@ -6,9 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(HitPoint))]
 public class MobAttack : MonoBehaviour
 {
-    // ひとまずはここで実行させるが、のちはMobStatusから実行できるように変更する。
     Animator animator;
-    HitPoint targetHitPoint;
 
     private void Start() {
         animator = GetComponent<Animator>();
@@ -16,9 +14,8 @@ public class MobAttack : MonoBehaviour
 
     public void AttackStart(int damage, float attackCooltime, HitPoint hitpoint) 
     {
-        targetHitPoint = hitpoint;
         animator.SetBool("isAttack", true);
-        StartCoroutine(AttackAction(damage, attackCooltime));
+        StartCoroutine(AttackAction(hitpoint, damage, attackCooltime));
     }
 
     public void AttackExit() 
@@ -26,7 +23,7 @@ public class MobAttack : MonoBehaviour
         animator.SetBool("isAttack", false);
     }
 
-    IEnumerator AttackAction(int damage, float attackCooltime) {
+    IEnumerator AttackAction(HitPoint targetHitPoint, int damage, float attackCooltime) {
 
         while(targetHitPoint.Hp > 0) 
         {
