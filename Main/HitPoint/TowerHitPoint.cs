@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,6 +38,7 @@ public class TowerHitPoint : HitPoint
         else if(this.gameObject.tag == "Enemy")
         {
             TowerSpawnAction?.Invoke();
+            Score.Instance.AddDestroyedCastleNum();
         }
         
         // アニメーション生成など

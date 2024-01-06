@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(HitPoint))]
+[RequireComponent(typeof(Animator))]
 public class MobAttack : MonoBehaviour
 {
     Animator animator;
+    [SerializeField] AudioSource AttackSound;
 
     private void Start() {
         animator = GetComponent<Animator>();
@@ -14,7 +15,6 @@ public class MobAttack : MonoBehaviour
 
     public void AttackStart(int damage, float attackCooltime, HitPoint hitpoint) 
     {
-        animator.SetBool("isAttack", true);
         StartCoroutine(AttackAction(hitpoint, damage, attackCooltime));
     }
 
@@ -28,6 +28,8 @@ public class MobAttack : MonoBehaviour
         while(targetHitPoint.Hp > 0) 
         {
             yield return new WaitForSeconds(attackCooltime);
+            if(AttackSound != null) AttackSound.Play();
+            animator.SetBool("isAttack", true);
 
             /* 複数いる場合にwaitしている場合に敵が死ぬとエラーになるため。
                これをしてもEnter時のみしか攻撃処理が始まらないので、上手くはいかない。
@@ -38,7 +40,7 @@ public class MobAttack : MonoBehaviour
                 targetHitPoint.Damage(damage);
             } 
             catch (Exception) {
-                Debug.Log("<color=red>エラー: 攻撃対象がいなくなりました</color>");
+                animator.SetBool("isAttack", false);
                 break;
             }            
         }

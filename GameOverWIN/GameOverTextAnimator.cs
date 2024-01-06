@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameOverTextAnimator : MonoBehaviour
 {
-    // [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     void Start()
     {
@@ -33,11 +33,11 @@ public class GameOverTextAnimator : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        // transformCache.DOLocalMove(lastPosition, 1f).SetEase(Ease.Linear).OnComplete(() =>
-        // {
-        //     // Score表示
-        //     scoreText.text = "score: " + Score.Instance.GameScore.ToString();
-        // });
+        transformCache.DOLocalMove(lastPosition, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            // Score表示
+            scoreText.text = "score: " + Score.Instance.DestroyedCastleNum.ToString();
+        });
 
         // // 5秒待ってからTitleSceneに移動する。DoTweenにはcoroutineを使わなくても任意の秒数待てるメソッドもある。
         // DOVirtual.DelayedCall(5, () =>
