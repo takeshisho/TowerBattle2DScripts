@@ -9,11 +9,12 @@ public class MobAttack : MonoBehaviour
     Animator animator;
     [SerializeField] AudioSource AttackSound;
 
-    private void Start() {
+    private void Start() 
+    {
         animator = GetComponent<Animator>();
     }
 
-    public void AttackStart(int damage, float attackCooltime, HitPoint hitpoint) 
+    public void AttackStart(HitPoint hitpoint, int damage, float attackCooltime) 
     {
         StartCoroutine(AttackAction(hitpoint, damage, attackCooltime));
     }
@@ -23,7 +24,8 @@ public class MobAttack : MonoBehaviour
         animator.SetBool("isAttack", false);
     }
 
-    IEnumerator AttackAction(HitPoint targetHitPoint, int damage, float attackCooltime) {
+    IEnumerator AttackAction(HitPoint targetHitPoint, int damage, float attackCooltime) 
+    {
 
         while(targetHitPoint.Hp > 0) 
         {
@@ -31,15 +33,12 @@ public class MobAttack : MonoBehaviour
             if(AttackSound != null) AttackSound.Play();
             animator.SetBool("isAttack", true);
 
-            /* 複数いる場合にwaitしている場合に敵が死ぬとエラーになるため。
-               これをしてもEnter時のみしか攻撃処理が始まらないので、上手くはいかない。
-               TODO: 複数体いる場合の攻撃処理を考える。*/
-            // try catchのおかけでエラーにならずに済むかも！！作成後に何度もテストして確認！
-
-            try {
+            try 
+            {
                 targetHitPoint.Damage(damage);
             } 
-            catch (Exception) {
+            catch (Exception) 
+            {
                 animator.SetBool("isAttack", false);
                 break;
             }            

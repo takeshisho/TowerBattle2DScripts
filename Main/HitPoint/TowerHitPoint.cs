@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +11,6 @@ public class TowerHitPoint : HitPoint
 
     protected override void Start() 
     {
-        // Hp = GetComponent<TowerManager>().MaxHp;
         Hp = 10;
         MaxHp = Hp;
         HpText.text = Hp.ToString() + "/" + MaxHp.ToString();
@@ -41,6 +37,6 @@ public class TowerHitPoint : HitPoint
             Score.Instance.AddDestroyedCastleNum();
         }
         
-        // アニメーション生成など
+        //TODO: アニメーション生成
     }
 }

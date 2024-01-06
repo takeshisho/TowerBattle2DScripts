@@ -12,7 +12,6 @@ public class MobStatus : MobManager
     private int forwardDirection = LEFT;
     private bool isMovable = true;
     private int enemyCount = 0;
-    // private bool isAttackable = false;
     MobMove mobMove;
     MobAttack mobAttack;
 
@@ -37,7 +36,7 @@ public class MobStatus : MobManager
         {
             enemyCount++;
             isMovable = false;
-            mobAttack.AttackStart(Damage, AttackCooltime, other.gameObject.GetComponent<HitPoint>());
+            mobAttack.AttackStart( other.gameObject.GetComponent<HitPoint>(), Damage, AttackCooltime);
         }
     }
 
@@ -47,7 +46,6 @@ public class MobStatus : MobManager
         if (other.gameObject.tag == "Enemy" && this.gameObject.tag == "Player"
             || other.gameObject.tag == "Player" && this.gameObject.tag == "Enemy") 
         {
-            // TODO: 一体敵を倒してもまだ敵がいる場合は処理をしない。
             enemyCount--;
             if(enemyCount > 0) return;
             isMovable = true;
