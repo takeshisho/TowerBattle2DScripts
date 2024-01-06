@@ -7,6 +7,7 @@ public class TowerSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyTowerPrefabs;
     [SerializeField] TextMeshProUGUI EnemyTowerHPText;
+    [SerializeField] GameObject TowerSpawnEffect;
     private int enemyTowerIndex = 0;
 
     private void Start() 
@@ -39,6 +40,11 @@ public class TowerSpawner : MonoBehaviour
         var defaultPosition = transformCache.position;
         var firstPosition = defaultPosition + new Vector3(0, 5f, 0);
         transformCache.position = firstPosition;
-        transformCache.DOLocalMove(defaultPosition, 1f);
+
+        transformCache.DOLocalMove(defaultPosition, 1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            Instantiate(TowerSpawnEffect, new Vector3(transform.position.x, -2, 0), Quaternion.Euler(0, 0, 0));
+        });
+
     }
 }
