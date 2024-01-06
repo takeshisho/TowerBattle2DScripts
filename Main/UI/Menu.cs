@@ -17,7 +17,6 @@ public class Menu : MonoBehaviour
 
     private void Pause()
     {
-        // timeScale: 時間の流れの速さを決める。1で通常速度、0で停止
         Time.timeScale = 0;
         pausePanel.SetActive(true);
     }

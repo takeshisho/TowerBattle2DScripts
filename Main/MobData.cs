@@ -4,14 +4,14 @@ using UnityEngine;
 public class MobData : ScriptableObject
 {
     // TODO: 本当はserializeFieldにして、プロパティをこっちにも作る方が良いかな？
-    [SerializeField] string mobName;     // キャラクターの名前
-    public int maxHp;            //体力
-    public int damage;           //攻撃力
-    public float speed;          //素早さ
-    public int   cost;           //コスト
-    public float cooltime;       //クールタイム
-    public float AttackCooltime; //攻撃クールタイム
-    public bool  isEnemy;        //敵か味方か
+    [SerializeField] string mobName;     
+    public int maxHp;            
+    public int damage;           
+    public float speed;
+    public int   cost;
+    public float cooltime;
+    public float AttackCooltime;
+    public bool  isEnemy;
     // public Sprite Icon;       //アイコン
     // AnimationClip[] Animations; //アニメーション
 }

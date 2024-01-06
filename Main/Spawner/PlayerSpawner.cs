@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
@@ -8,8 +6,8 @@ public class PlayerSpawner : MonoBehaviour
 
     private void Start() 
     {
-        for (int i = 0; i < playerMobButtons.Length; i++) {
-            int index = i;
+        for (int i = 0; i < playerMobButtons.Length; i++) 
+        {
             playerMobButtons[i].onClickCallback = PlayerMobSpawn;
         }
     }

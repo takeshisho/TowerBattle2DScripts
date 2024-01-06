@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitPoint : MonoBehaviour
@@ -7,7 +5,6 @@ public class HitPoint : MonoBehaviour
     public int Hp;
 
     protected virtual void Start() {
-        // towerとmobでHpの取得方法が違うので、それぞれのクラスで実装する
     }
 
     public virtual void Damage(int damage)
