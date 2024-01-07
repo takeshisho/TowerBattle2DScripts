@@ -9,7 +9,7 @@ https://www.youtube.com/watch?v=o8z2VRqWnQs
 # 著作権等
 音楽: 魔王魂
 
-キャラクター、背景などの参考サイト: https://www.youtube.com/watch?v=FcUGwDnidLo&list=PLTo3I1qRrK_aiLgP_UB5sZylqXkZu4740
+キャラクター、背景などの参考サイト: https://github.com/Unity-Youchien/SlimeWar/releases/tag/Sprites
 
 エフェクト: Cartoon FX Remaster Free(Unity Asset Store)
 
