@@ -15,5 +15,6 @@ public class PlayerSpawner : MonoBehaviour
     private void PlayerMobSpawn(GameObject playerMobPrefab) 
     {
         Instantiate(playerMobPrefab, transform.position, Quaternion.identity);
+        Cost.Instance.UseCost(playerMobPrefab.GetComponent<MobManager>().Cost);
     }
 }
