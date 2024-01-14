@@ -43,5 +43,6 @@ public class MobAttack : MonoBehaviour
                 break;
             }            
         }
+        animator.SetBool("isAttack", false);
     }
 }
