@@ -24,7 +24,7 @@ public class MobStatus : MobManager
 
     private void Update() 
     {
-        if(isMovable) mobMove.Move(Speed, forwardDirection);
+        if(isMovable) mobMove.Move(MovingSpeed, forwardDirection);
         
     }
 

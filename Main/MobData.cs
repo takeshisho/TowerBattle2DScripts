@@ -7,9 +7,9 @@ public class MobData : ScriptableObject
     [SerializeField] string mobName;     
     public int maxHp;            
     public int damage;           
-    public float speed;
+    public float movingSpeed;
     public int   cost;
-    public float cooltime;
+    public float spawnCooltime;
     public float AttackCooltime;
     public bool  isEnemy;
     // public Sprite Icon;       //アイコン
