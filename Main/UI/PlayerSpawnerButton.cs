@@ -12,22 +12,24 @@ public class PlayerSpawnerButton : CustomButton
 
     private RectTransform hidePanelRectTransform;
     private float originalHeight;
+    private int spawnCost;
     private bool isClickable = true;
 
     private void Start() {
         hidePanel.gameObject.SetActive(false);
         hidePanelRectTransform = hidePanel.GetComponent<RectTransform>();
         originalHeight = hidePanelRectTransform.sizeDelta.y;
-        spqwnCostText.text = playerMobPrefab.GetComponent<MobManager>().Cost.ToString();
+        spawnCost = playerMobPrefab.GetComponent<MobManager>().Cost;
+        spqwnCostText.text = spawnCost.ToString();
     }
 
     private void Update() {
-        if(Cost.Instance.GameCost < playerMobPrefab.GetComponent<MobManager>().Cost)
+        if(Cost.Instance.GameCost < spawnCost)
         {
             isClickable = false;
             hidePanel.gameObject.SetActive(true);
         }
-        else
+        else if(Cost.Instance.GameCost == spawnCost)
         {
             isClickable = true;
             hidePanel.gameObject.SetActive(false);
@@ -51,7 +53,7 @@ public class PlayerSpawnerButton : CustomButton
 
         // Panelの高さを縮小するアニメーション（上から縮小し、底辺にくっついて消える）
         hidePanelRectTransform.DOSizeDelta(new Vector2(hidePanelRectTransform.sizeDelta.x, 0), playerMobPrefab.GetComponent<MobManager>().SpawnCooltime)
-            .SetEase(Ease.OutCubic)
+            .SetEase(Ease.OutSine)
             .OnComplete(EndSpawnCooltimeProcess);
     }
 
